@@ -1,0 +1,77 @@
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# File di progetto Rider
+.idea/
+
+# Visual Studio / VSCode cache/opzioni directory
+.vs/
+.vscode/
+
+# File di cache OS X
+.DS_Store
+
+# File di backup di scene
+*.0
+*.bak
+
+# Autosalvataggi di Unity
+*.autosave
+
+# File TMP
+*.tmp
+
+# File di Unity3D generati
+*.unitypackage
+
+# Crashlytics generato dal file di log
+crashlytics-build.properties
+
+# Windows image file caches
+Thumbs.db
+
+# Mono auto generated files
+mono_crash.*
+
+# File di esportazione di pacchetti
+*.exportpackage
+
+# Build iOS
+**/build/iOS/
+
+# Spam di SVN
+.svn/
+
+# Backup & Logs
+*.log
+*.stackdump
+
+# OS generated files
+ehthumbs.db
+Icon?
+[Tt]humbs.db
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Easy Save 2 files
+es2_auto_save/
+es2_auto_save.meta
+
+# PlasticSCM
+.plastic/
+
+# Autobuild Pipe
+Build/Pipe/
+
+# Visual Studio cache files
+.vs/
+
+# Gradle cache files
+.gradle/
