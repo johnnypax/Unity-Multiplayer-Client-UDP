@@ -8,6 +8,7 @@ public class UDPClientUnity : MonoBehaviour
 {
     public string udpServerAddress = "127.0.0.1";
     public int messagesSendDelay = 50;              //20 times per second
+    private string uniqueID;
 
     UdpClient client;
     IPEndPoint serverEndPoint;
@@ -16,6 +17,8 @@ public class UDPClientUnity : MonoBehaviour
     {
         client = new UdpClient();
         serverEndPoint = new IPEndPoint(IPAddress.Parse(udpServerAddress), 11000);
+
+        uniqueID = System.Guid.NewGuid().ToString(); // Genera un nuovo Guid come identificativo.
 
         // Inizia l'invio delle coordinate.
         StartSendingCoordinates();
@@ -27,16 +30,16 @@ public class UDPClientUnity : MonoBehaviour
         {
             while (true)
             {
-                // Serializza le coordinate del GameObject.
-                Vector3 position = this.transform.position;
-                Quaternion rotation = this.transform.rotation;
-                string message = $"{position.x},{position.y},{position.z},{rotation.x},{rotation.y},{rotation.z}";
+                Vector3 position = this.transform.position;         //Player position
+                Quaternion rotation = this.transform.rotation;      //Player rotation
+
+                string message = $"{uniqueID}:{position.x};{position.y};{position.z};{rotation.x};{rotation.y};{rotation.z}";
                 byte[] bytes = Encoding.UTF8.GetBytes(message);
 
-                // Invia le coordinate al server.
-                await client.SendAsync(bytes, bytes.Length, serverEndPoint);
-
-                await Task.Delay(messagesSendDelay);
+                Debug.Log(message);
+                
+                await client.SendAsync(bytes, bytes.Length, serverEndPoint);    //Asynchronusly send coordinates to the server
+                await Task.Delay(messagesSendDelay);                            //Wait for the next send for avoiding DoS
             }
         }
         catch (System.Exception e)
